@@ -4,7 +4,6 @@ FROM ghcr.io/home-assistant/base-debian:bookworm
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 WORKDIR /usr/src
-ARG LINUX_VOICE_ASSISTANT_VERSION=1.1.13
 ENV PIP_BREAK_SYSTEM_PACKAGES=1
 
 # Install system dependencies
@@ -41,7 +40,7 @@ RUN \
         setuptools \
         wheel \
     && pip3 install --no-cache-dir \
-        "linux-voice-assistant @ https://github.com/OHF-Voice/linux-voice-assistant/archive/refs/tags/v${LINUX_VOICE_ASSISTANT_VERSION}.tar.gz" \
+        "linux-voice-assistant @ https://github.com/OHF-Voice/linux-voice-assistant/archive/refs/pull/409/head.tar.gz" \
     \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
