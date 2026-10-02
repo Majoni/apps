@@ -1,5 +1,5 @@
 ---
-version: 1.1.13-kitt-test
+version: 1.1.16-pr409-test
 slug: assist_satellite_kitt_test
 name: Assist Satellite KITT Test
 description: Turn HA host into a voice assistant with a connected microphone and speaker
