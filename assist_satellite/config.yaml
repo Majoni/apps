@@ -1,7 +1,7 @@
 ---
-version: 1.1.15
-slug: assist_satellite
-name: Assist Satellite
+version: 1.1.13-kitt-test
+slug: assist_satellite_kitt_test
+name: Assist Satellite KITT Test
 description: Turn HA host into a voice assistant with a connected microphone and speaker
 url: https://github.com/OHF-Voice/apps/blob/main/assist_satellite
 hassio_api: false
@@ -13,11 +13,12 @@ discovery:
   - esphome
 map:
   - share:rw
+
 options:
   name: ""
-  port: 6053
+  port: 6054
   audio_input_device: ""
-  audio_output_device: ""  
+  audio_output_device: ""
   wake_word: "okay_nabu"
   stop_word: "stop"
   refractory_seconds: 2.0
@@ -30,20 +31,21 @@ options:
   mic_noise_suppression: 0
   mic_auto_gain: 0
   peripheral_host: "0.0.0.0"
-  peripheral_port: 6055
+  peripheral_port: 6056
   peripheral_volume_step: 0.05
-  disable_peripheral_api: false  
+  disable_peripheral_api: false
   debug_logging: false
   enable_colored_debug: false
   mute_sound: "/usr/src/sounds/mute_switch_on.flac"
   unmute_sound: "/usr/src/sounds/mute_switch_off.flac"
-  preferences_file: "/share/assist_satellite/preferences.json"
-  download_dir: "/share/assist_satellite/local"
+  preferences_file: "/share/assist_satellite_kitt_test/preferences.json"
+  download_dir: "/share/assist_satellite_kitt_test/local"
+
 schema:
   name: str?
   port: int
   audio_input_device: str?
-  audio_output_device: str?  
+  audio_output_device: str?
   wake_word: str
   stop_word: str
   refractory_seconds: float
@@ -65,6 +67,7 @@ schema:
   unmute_sound: str
   preferences_file: str
   download_dir: str
+
 audio: true
 host_network: true
 homeassistant: 2026.3.0
