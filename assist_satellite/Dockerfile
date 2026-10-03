@@ -50,7 +50,7 @@ path = Path(satellite.__file__)
 text = path.read_text()
 
 old = "self.state.tts_player.play(self._tts_url, done_callback=self._tts_finished)"
-new = "self._tts_finished()"
+new = "self._continue_conversation = False\n        self._tts_finished()"
 
 if old not in text:
     raise SystemExit("No se encontró la línea de reproducción TTS")
