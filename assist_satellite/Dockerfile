@@ -39,7 +39,7 @@ RUN \
     && pip3 install --no-cache-dir -U \
         setuptools \
         wheel \
-   "linux-voice-assistant @ https://github.com/Majoni/linux-voice-assistant/archive/refs/heads/main.tar.gz" \
+   "linux-voice-assistant @ https://github.com/Majoni/linux-voice-assistant/archive/218095ad5faaee886fec6d30c18bd0fe68a97cdc.tar.gz" \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*
    
