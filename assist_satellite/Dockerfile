@@ -19,7 +19,7 @@ ENV PIP_BREAK_SYSTEM_PACKAGES=1
 # - procps:             For pgrep in healthcheck
 RUN \
     apt-get update && \
-        apt-get install --yes --no-install-recommends \
+    apt-get install --yes --no-install-recommends \
         python3 \
         python3-pip \
         avahi-utils \
@@ -35,14 +35,30 @@ RUN \
         iproute2 \
         vim \
         procps \
-    \
     && pip3 install --no-cache-dir -U \
         setuptools \
         wheel \
-   "linux-voice-assistant @ https://github.com/Majoni/linux-voice-assistant/archive/218095ad5faaee886fec6d30c18bd0fe68a97cdc.tar.gz" \
-&& apt-get clean \
-&& rm -rf /var/lib/apt/lists/*
-   
+        "linux-voice-assistant @ https://github.com/OHF-Voice/linux-voice-assistant/archive/refs/pull/409/head.tar.gz" \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN python3 - <<'PY'
+from pathlib import Path
+import linux_voice_assistant.satellite as satellite
+
+path = Path(satellite.__file__)
+text = path.read_text()
+
+old = "self.state.tts_player.play(self._tts_url, done_callback=self._tts_finished)"
+new = "self._tts_finished()"
+
+if old not in text:
+    raise SystemExit("No se encontró la línea de reproducción TTS")
+
+path.write_text(text.replace(old, new, 1))
+print("Parche KITT aplicado:", path)
+PY
+
 # Copy default sounds
 COPY sounds/ ./sounds/
 
