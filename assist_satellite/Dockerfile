@@ -42,9 +42,7 @@ RUN \
    "linux-voice-assistant @ https://github.com/Majoni/linux-voice-assistant/archive/refs/heads/main.tar.gz" \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
+   
 # Copy default sounds
 COPY sounds/ ./sounds/
 
