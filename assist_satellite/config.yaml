@@ -1,5 +1,5 @@
 ---
-version: version: "1.1.17-kitt-echo"
+version: "1.1.17-kitt-echo"
 slug: assist_satellite_kitt_test
 name: Assist Satellite KITT Test
 description: Turn HA host into a voice assistant with a connected microphone and speaker
